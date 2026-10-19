@@ -1,5 +1,6 @@
 package controller;
 
+import dto.TransferenciaDTO;
 import entity.Transacao;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
@@ -24,6 +25,15 @@ public class TransacaoController {
     public Response create(Transacao transacao) {
         transacao.persist();
         return Response.status(Response.Status.CREATED).entity(transacao).build();
+    }
+
+    @POST
+    @Path("transaction")
+    @Transactional
+    public Response transaction(TransferenciaDTO transferencia) {
+        transferencia.getDepositar().persist();
+        transferencia.getReceber().persist();
+        return Response.status(Response.Status.CREATED).entity(transferencia).build();
     }
 
     @PUT

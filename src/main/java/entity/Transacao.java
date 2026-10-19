@@ -4,15 +4,15 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
-import java.time.LocalDate;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 public class Transacao extends PanacheEntity {
     public String descricao;
     public BigDecimal valor;
     public String tipo;
-    public LocalDate datatransacao;
+    public LocalDateTime datatransacao;
 
     @ManyToOne
     @JoinColumn(name = "conta_id")
@@ -22,7 +22,6 @@ public class Transacao extends PanacheEntity {
     @JoinColumn(name = "categoria_id")
     public Categoria categoria;
 
-    // Getters and Setters
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
 
@@ -32,8 +31,8 @@ public class Transacao extends PanacheEntity {
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public LocalDate getDatatransacao() { return datatransacao; }
-    public void setDatatransacao(LocalDate datatransacao) { this.datatransacao = datatransacao; }
+    public LocalDateTime getDatatransacao() { return datatransacao; }
+    public void setDatatransacao(LocalDateTime datatransacao) { this.datatransacao = datatransacao; }
 
     public Conta getConta() { return conta; }
     public void setConta(Conta conta) { this.conta = conta; }
